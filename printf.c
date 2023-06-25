@@ -1,26 +1,41 @@
 #include "main.h"
+
+/**
+ * _printf - printf function
+ * @format: format
+ * Return: total length
+ */
+
 int _printf(const char *format, ...)
 {
 if (format != NULL)
 {
 	va_list ptr;
-	int i, l;
+	int i, l, p;
 
-	va_start (ptr, format);
+	va_start(ptr, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			calling(format[i]);
-				
+			if (format[i] == '\0')
+				return (-1);
+			p = calling(format[i], ptr);
+			if (p != -1)
+				l += p;
+			else
+			{
+				print_percent(ptr);
+				_putchar(format[i]);
+				l += 2;
+			}
 		}
 		else
 		{
 			_putchar(format[i]);
 			l++;
 		}
-	
 	}
 return (l);
 
@@ -33,10 +48,18 @@ return (-1);
 
 
 }
-int calling (char c, va_list ptr)
-{	
+
+/**
+ * calling - calling function
+ * @c: specifier
+ * @ptr: argument
+ * Return: length
+ */
+
+int calling(char c, va_list ptr)
+{
 	int j, size;
-	struct list check[]
+	ff check[] =
 	{
 		{'c', print_char},
 		{'s', print_string},
@@ -47,6 +70,7 @@ int calling (char c, va_list ptr)
 	for (j = 0; j < size; j++)
 	{
 		if (c == check[j].c)
-			check[j].p(ptr);
-	
+			return (check[j].p(ptr));
 	}
+	return (-1);
+}
