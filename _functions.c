@@ -24,12 +24,7 @@ int print_string(va_list ptr)
 	string = va_arg(ptr, char *);
 	if (!string)
 		string = "(null)";
-<<<<<<< HEAD
 	return (write(STDOUT_FILENO, string, _strlen(string)));
-=======
-	printf("His %d\n", n);
-	return (_strlen(string));
->>>>>>> f99491e09aafa059330e6588e7f8968235ff8497
 }
 
 /**
