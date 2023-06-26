@@ -71,10 +71,7 @@ int calling(char c, va_list ptr)
 	for (j = 0; j < size; j++)
 	{
 		if (c == check[j].c)
-		{
-			printf("Return: %i\n", n);
-			return (n);
-		}
+			return (check[j].p(ptr));
 	}
 	return (-1);
 }
