@@ -22,7 +22,7 @@ int print_string(va_list ptr)
 	char *string;
 
 	string = va_arg(ptr, char *);
-	if (!string)
+	if (string == NULL)
 		string = "(null)";
 	return (write(STDOUT_FILENO, string, _strlen(string)));
 }
@@ -50,7 +50,54 @@ int _strlen(char *c)
 	int count;
 
 	count = 0;
-	while (c[count])
+	while (c[count] != '\0')
 	count++;
 	return (count);
+}
+
+/**
+ * print_int - print an integer
+ * @args: argument
+ * Return: no. of printed chars
+ */
+int print_int(va_list args)
+{
+	int rev = 0, cnt = 0, cnt_num = 0, n = va_arg(args, int);
+
+	if (!n)
+		return (printchar('0'));
+	if (n == -2147483648)
+	{
+		n = 147483648;
+		printchar('-');
+		printchar('2');
+		cnt = 2;
+	}
+	if (n < 0)
+	{
+		n *= -1;
+		printchar('-');
+		cnt++;
+	}
+	if (n >= 1000000000)
+	{
+		printchar('0' + n / 1000000000);
+		n -= (n / 1000000000) * 1000000000;
+		cnt++;
+	}
+
+	while (n)
+	{
+		rev *= 10;
+		rev += n % 10;
+		n /= 10;
+		cnt_num++;
+	}
+	while (cnt_num--)
+	{
+		printchar(rev % 10 + '0');
+		rev /= 10;
+		cnt++;
+	}
+	return (cnt);
 }

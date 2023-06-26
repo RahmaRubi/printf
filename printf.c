@@ -64,7 +64,9 @@ int calling(char c, va_list ptr)
 	ff check[] = {
 		{'c', print_char},
 		{'s', print_string},
-		{'%', print_percent}
+		{'%', print_percent},
+		{'i', print_int},
+		{'d', print_int}};
 	};
 	size = (sizeof(check) / sizeof(check[0]));
 
