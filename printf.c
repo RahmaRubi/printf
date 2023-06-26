@@ -8,47 +8,31 @@
 
 int _printf(const char *format, ...)
 {
-if (format != NULL)
-{
-	va_list ptr;
-	int i, l = 0, p;
-
-	l = 0;
-	va_start(ptr, format);
-	for (i = 0; format[i] != '\0'; i++)
+	if (format)
 	{
-		if (format[i] == '%')
+		va_list ptr;
+		int i, cnt = 0;
+
+		va_start(ptr, format);
+		for (i = 0; format[i] != '\0'; i++)
 		{
-			i++;
-			if (format[i] == '\0')
-				return (-1);
-			p = calling(format[i], ptr);
-			if (p != -1)
-				l += p;
+			if (format[i] == '%')
+			{
+				i++;
+				if (format[i] == '\0')
+					return (-1);
+				cnt += calling(format[i], ptr);
+			}
 			else
 			{
-				print_percent(ptr);
 				_putchar(format[i]);
-				l += 2;
+				cnt++;
 			}
 		}
-		else
-		{
-			_putchar(format[i]);
-			l++;
-		}
+		va_end(ptr);
+		return (cnt);
 	}
-	va_end(ptr);
-return (l);
-
-
-
-
-}
-return (-1);
-
-
-
+	return (-1);
 }
 
 /**
@@ -61,7 +45,7 @@ return (-1);
 int calling(char c, va_list ptr)
 {
 	int j, size;
-	ff check[] = {
+	ls check[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
@@ -75,5 +59,5 @@ int calling(char c, va_list ptr)
 		if (c == check[j].c)
 			return (check[j].p(ptr));
 	}
-	return (-1);
+	return (print_unkown(c));
 }
