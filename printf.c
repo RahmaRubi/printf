@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 if (format != NULL)
 {
 	va_list ptr;
-	int i, l, p;
+	int i, l = 0, p;
 
 	va_start(ptr, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -60,8 +60,7 @@ return (-1);
 int calling(char c, va_list ptr)
 {
 	int j, size;
-	ff check[] =
-	{
+	ff check[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent}
@@ -71,7 +70,10 @@ int calling(char c, va_list ptr)
 	for (j = 0; j < size; j++)
 	{
 		if (c == check[j].c)
-			return (check[j].p(ptr));
+		{
+			printf("Return: %i\n", n);
+			return (n);
+		}
 	}
 	return (-1);
 }
