@@ -65,23 +65,23 @@ int print_int(va_list args)
 	int rev = 0, cnt = 0, cnt_num = 0, n = va_arg(args, int);
 
 	if (!n)
-		return (printchar('0'));
+		return (_putchar('0'));
 	if (n == -2147483648)
 	{
 		n = 147483648;
-		printchar('-');
-		printchar('2');
+		_putchar('-');
+		_putchar('2');
 		cnt = 2;
 	}
 	if (n < 0)
 	{
 		n *= -1;
-		printchar('-');
+		_putchar('-');
 		cnt++;
 	}
 	if (n >= 1000000000)
 	{
-		printchar('0' + n / 1000000000);
+		_putchar('0' + n / 1000000000);
 		n -= (n / 1000000000) * 1000000000;
 		cnt++;
 	}
@@ -95,7 +95,7 @@ int print_int(va_list args)
 	}
 	while (cnt_num--)
 	{
-		printchar(rev % 10 + '0');
+		_putchar(rev % 10 + '0');
 		rev /= 10;
 		cnt++;
 	}

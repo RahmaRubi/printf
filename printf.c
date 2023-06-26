@@ -66,7 +66,7 @@ int calling(char c, va_list ptr)
 		{'s', print_string},
 		{'%', print_percent},
 		{'i', print_int},
-		{'d', print_int}};
+		{'d', print_int}
 	};
 	size = (sizeof(check) / sizeof(check[0]));
 
