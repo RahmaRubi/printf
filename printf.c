@@ -13,6 +13,7 @@ if (format != NULL)
 	va_list ptr;
 	int i, l, p;
 
+	l = 0;
 	va_start(ptr, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
