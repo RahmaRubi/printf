@@ -66,13 +66,7 @@ int print_int(va_list args)
 
 	if (!n)
 		return (_putchar('0'));
-	if (n == -2147483648)
-	{
-		n = 147483648;
-		_putchar('-');
-		_putchar('2');
-		cnt = 2;
-	}
+
 	if (n < 0)
 	{
 		n *= -1;
