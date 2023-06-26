@@ -9,9 +9,8 @@
 /**
  * list - struct
  * @c: specifier member
- * @p: related function 
+ * @p: related function
  */
-
 struct list
 {
 	char c;
@@ -30,7 +29,7 @@ int print_string(va_list ptr);
 int print_percent(va_list ptr);
 int _printf(const char *format, ...);
 int _putchar(char c);
-int _strlen (char *c);
-int calling (char c, va_list ptr);
+int _strlen(char *c);
+int calling(char c, va_list ptr);
 
 #endif
