@@ -70,7 +70,13 @@ int rot_trans(va_list ptr)
 	}
 	return (i);
 }
-
+/**
+ * rev_string - print a string in reverse 
+ *
+ * @ptr: argument
+ *
+ * Return: return no. of chars
+ */
 int rev_string(va_list ptr)
 {
 	char *string;
@@ -78,9 +84,9 @@ int rev_string(va_list ptr)
 
 	len = 0, i = 0;
 
-        string = va_arg(ptr, char *);
-        if (!string)
-                string = "(null)";
+	string = va_arg(ptr, char *);
+	if (!string)
+		string = "(null)";
 	len = _strlen(string);
 	for (i = len - 1; i >= 0; i--)
 	{

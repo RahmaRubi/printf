@@ -5,7 +5,6 @@
  * @format: format
  * Return: total length
  */
-
 int _printf(const char *format, ...)
 {
 	va_list ptr;
