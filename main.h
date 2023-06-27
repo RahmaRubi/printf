@@ -29,4 +29,5 @@ int print_unknown(char c);
 int print_binary(va_list ptr);
 int rot_trans(va_list ptr);
 int rev_string(va_list ptr);
+int print_unsigned(va_list ptr);
 #endif

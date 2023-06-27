@@ -75,7 +75,7 @@ int rot_trans(va_list ptr)
  *
  * @ptr: argument
  *
- * Return: return no. of chars
+ * Return: no. of printed chars
  */
 int rev_string(va_list ptr)
 {
@@ -93,4 +93,31 @@ int rev_string(va_list ptr)
 		_putchar(string[i]);
 	}
 	return (len);
+}
+
+/**
+ * print_unsigned - print unsigned integer
+ *
+ * @ptr: argument
+ *
+ * Return: no. of printed chars
+ */
+int print_unsigned(va_list ptr)
+{
+	unsigned int num, cpy, i, cnt = 0;
+	char str[] = "0000000000";
+	
+	num = va_arg(ptr, unsigned int);
+	cpy = num;
+	while (cpy)
+	{
+		cnt++;
+		cpy /= 10;
+	}
+	for (i = 0; num; i++)
+	{
+		str[cnt - i - 1] = '0' + num % 10;
+		num /= 10;
+	}
+	return (write(1, str, cnt));	
 }

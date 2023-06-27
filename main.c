@@ -9,6 +9,7 @@
  */
 int main(void)
 {
-    _printf("Unknown:[%r]\n", NULL);
-    return (0);
+	printf("%u\n", 1234);
+    	_printf("%u\n", 1234);
+	return (0);
 }
