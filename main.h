@@ -24,7 +24,8 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _strlen(char *c);
 int calling(char c, va_list ptr);
-int print_int(va_list args);
+int print_int(va_list ptr);
 int print_unknown(char c);
-int print_binary(va_list args);
+int print_binary(va_list ptr);
+int rot_trans(va_list ptr);
 #endif

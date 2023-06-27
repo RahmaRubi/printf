@@ -17,16 +17,16 @@ int print_unknown(char c)
 /**
  * print_binary - print the binary repersentation of the number
  *
- * @args: arguement
+ * @ptr: arguement
  *
  * Return: no. of printed chars
  */
-int print_binary(va_list args)
+int print_binary(va_list ptr)
 {
 	int start = -1, i;
 	unsigned int n;
 
-	n = va_arg(args, unsigned int);
+	n = va_arg(ptr, unsigned int);
 
 	for (i = 31; i >= 0; i--)
 	{
@@ -41,4 +41,32 @@ int print_binary(va_list args)
 		return (1);
 	}
 	return (start + 1);
+}
+
+
+/**
+ * rot_trans - rotate every char by 13
+ *
+ * @ptr: argument
+ *
+ * Return: no. of printed chars
+ */
+int rot_trans(va_list ptr)
+{
+	char *str;
+	int i;
+
+	str = va_arg(ptr, char *);
+	if (!str)
+		str = "(null)";
+	for (i = 0; i < _strlen(str); i++)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			_putchar((str[i] - 'a' + 13) % 26 + 'a');
+		else if (str[i] >= 'A' && str[i] <= 'Z')
+			_putchar((str[i] - 'A' + 13) % 26 + 'A');
+		else
+			_putchar(str[i]);
+	}
+	return (i);
 }
