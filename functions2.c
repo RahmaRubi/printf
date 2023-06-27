@@ -7,7 +7,7 @@
  */
 int print_unkown(char c)
 {
-	print_percent(NULL);
+	_putchar('%');
 	_putchar(c);
 	return (2);
 }

@@ -18,14 +18,12 @@ int print_char(va_list ptr)
 
 int print_string(va_list ptr)
 {
-	char *str = va_arg(ptr, char *);
-	int i;
+	char *string;
 
-	if (str == NULL)
-		str = "(null)";
-	for (i = 0; str[i] != '\0'; i++)
-		write(1, &str[i], 1);
-	return (i);
+	string = va_arg(ptr, char *);
+	if (!string)
+		string = "(null)";
+	return (write(1, string, _strlen(string)));
 }
 
 /**
