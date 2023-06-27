@@ -8,31 +8,30 @@
 
 int _printf(const char *format, ...)
 {
-	if (format)
-	{
-		va_list ptr;
-		int i, cnt = 0;
+	va_list ptr;
+	int i, cnt = 0;
 
-		va_start(ptr, format);
-		for (i = 0; format[i] != '\0'; i++)
+	va_start(ptr, format);
+	if (format == NULL)
+		return (-1);
+
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
 		{
-			if (format[i] == '%')
-			{
-				i++;
-				if (format[i] == '\0')
-					return (-1);
-				cnt += calling(format[i], ptr);
-			}
-			else
-			{
-				_putchar(format[i]);
-				cnt++;
-			}
+			i++;
+			if (format[i] == '\0')
+				return (-1);
+			cnt += calling(format[i], ptr);
 		}
-		va_end(ptr);
-		return (cnt);
+		else
+		{
+			_putchar(format[i]);
+			cnt++;
+		}
 	}
-	return (-1);
+	va_end(ptr);
+	return (cnt);
 }
 
 /**
@@ -41,10 +40,9 @@ int _printf(const char *format, ...)
  * @ptr: argument
  * Return: length
  */
-
 int calling(char c, va_list ptr)
 {
-	int j, size;
+	int i, size;
 	ls check[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -54,10 +52,10 @@ int calling(char c, va_list ptr)
 	};
 	size = (sizeof(check) / sizeof(check[0]));
 
-	for (j = 0; j < size; j++)
+	for (i = 0; i < size; i++)
 	{
-		if (c == check[j].c)
-			return (check[j].p(ptr));
+		if (c == check[i].c)
+			return (check[i].p(ptr));
 	}
 	return (print_unkown(c));
 }
