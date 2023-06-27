@@ -71,7 +71,7 @@ int rot_trans(va_list ptr)
 	return (i);
 }
 /**
- * rev_string - print a string in reverse 
+ * rev_string - print a string in reverse
  *
  * @ptr: argument
  *
