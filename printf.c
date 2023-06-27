@@ -50,7 +50,8 @@ int calling(char c, va_list ptr)
 		{'i', print_int},
 		{'d', print_int},
 		{'b', print_binary},
-		{'R', rot_trans}
+		{'R', rot_trans},
+		{'r', rev_string}
 	};
 	size = (sizeof(check) / sizeof(check[0]));
 
