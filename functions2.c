@@ -2,10 +2,12 @@
 
 /**
  * print_unknown - print unknown specifiers
+ *
  * @c: the char to print
+ *
  * Return: 1 (Always)
  */
-int print_unkown(char c)
+int print_unknown(char c)
 {
 	_putchar('%');
 	_putchar(c);

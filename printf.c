@@ -58,5 +58,5 @@ int calling(char c, va_list ptr)
 		if (c == check[i].c)
 			return (check[i].p(ptr));
 	}
-	return (print_unkown(c));
+	return (print_unknown(c));
 }
