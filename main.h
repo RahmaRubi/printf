@@ -7,23 +7,16 @@
 #include <stdarg.h>
 
 /**
- * list - struct
- * @c: specifier member
+ * struct list - struct for format specifier and related function
+ * @c: format specifier member
  * @p: related function
  */
-struct list
+typedef struct list
 {
 	char c;
 	int (*p)(va_list ptr);
-};
+} ls;
 
-/**
- * typedef struct list ff - struct define
- * @list: ff
- * @ff: eshta
- */
-
-typedef struct list ff;
 int print_char(va_list ptr);
 int print_string(va_list ptr);
 int print_percent(va_list ptr);
@@ -31,5 +24,8 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _strlen(char *c);
 int calling(char c, va_list ptr);
-int print_int(va_list args);
+int print_int(va_list ptr);
+int print_unknown(char c);
+int print_binary(va_list ptr);
+int rot_trans(va_list ptr);
 #endif

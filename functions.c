@@ -7,8 +7,7 @@
 
 int print_char(va_list ptr)
 {
-
-		return (_putchar(va_arg(ptr, int)));
+	return (_putchar(va_arg(ptr, int)));
 }
 
 /**
@@ -22,9 +21,9 @@ int print_string(va_list ptr)
 	char *string;
 
 	string = va_arg(ptr, char *);
-	if (string == NULL)
+	if (!string)
 		string = "(null)";
-	return (write(STDOUT_FILENO, string, _strlen(string)));
+	return (write(1, string, _strlen(string)));
 }
 
 /**
@@ -33,9 +32,8 @@ int print_string(va_list ptr)
  * Return: length
  */
 
-int print_percent(va_list ptr)
+int print_percent(__attribute__((unused)) va_list ptr)
 {
-	(void) ptr;
 	return (_putchar('%'));
 }
 
@@ -47,11 +45,10 @@ int print_percent(va_list ptr)
 
 int _strlen(char *c)
 {
-	int count;
+	int count = 0;
 
-	count = 0;
-	while (c[count] != '\0')
-	count++;
+	while (c[count])
+		count++;
 	return (count);
 }
 
