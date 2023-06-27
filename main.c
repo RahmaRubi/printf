@@ -1,39 +1,46 @@
+#include <limits.h>
 #include <stdio.h>
+#include "main.h"
 
-int main()
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
 {
-    // Test case with empty format string
-    _printf("Test Case 1: Empty format string: %s\n", "");
+    int len;
+    int len2;
+    unsigned int ui;
+    void *addr;
 
-    // Test case with a single character
-    _printf("Test Case 2: Single character: %c\n", 'A');
-
-    // Test case with a single percent sign
-    _printf("Test Case 3: Single percent sign: %%\n");
-
-    // Test case with a large string
-    char largeString[10000] = "This is a large string.";
-    _printf("Test Case 4: Large string: %s\n", largeString);
-
-    // Test case with multiple conversion specifiers and flags
-    _printf("Test Case 5: %d %06d %+d\n", 123, 456, -789);
-
-    // Test case with mixed conversion specifiers and regular text
-    _printf("Test Case 6: Hello %s, the answer is %d.\n", "world", 42);
-
-    // Test case with NULL string pointer
-    char *nullString = NULL;
-    _printf("Test Case 7: NULL string: %s\n", nullString);
-
-    // Test case with wide characters
-    _printf("Test Case 8: Wide character: %lc\n", L'W');
-
-    // Test case with wide strings
-    _printf("Test Case 9: Wide string: %ls\n", L"Hello, world!");
-
-    // Test case with octal and hexadecimal numbers
-    _printf("Test Case 10: Octal: %o, Hexadecimal: %x\n", 123, 255);
-
-    return 0;
+    len = _printf("Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
+    ui = (unsigned int)INT_MAX + 1024;
+    addr = (void *)0x7ffe637541f0;
+    _printf("Length1:[%d, %i]\n%", len, len);
+    printf("Length2:[%d, %i]\n%", len2, len2);
+    _printf("Negative:[%d]\n", -762534);
+    printf("Negative:[%d]\n", -762534);
+    _printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    _printf("Character:[%c]\n", 'H');
+    printf("Character:[%c]\n", 'H');
+    _printf("String:[%s]\n", "I am a string !");
+    printf("String:[%s]\n", "I am a string !");
+    _printf("Address:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
+    len = _printf("Percent:[%%]\n");
+    len2 = printf("Percent:[%%]\n");
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("Unknown:[%r]\n");
+    printf("Unknown:[%r]\n");
+    printf("%s", NULL);
+    _printf("%d is %b in binary\n", 5, 5);
+    return (0);
 }
-

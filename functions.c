@@ -32,9 +32,8 @@ int print_string(va_list ptr)
  * Return: length
  */
 
-int print_percent(va_list ptr)
+int print_percent(__attribute__((unused)) va_list ptr)
 {
-	(void) ptr;
 	return (_putchar('%'));
 }
 

@@ -26,4 +26,5 @@ int _strlen(char *c);
 int calling(char c, va_list ptr);
 int print_int(va_list args);
 int print_unkown(char c);
+int print_binary(va_list args);
 #endif
