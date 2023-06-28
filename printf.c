@@ -5,16 +5,15 @@
  * @format: format
  * Return: total length
  */
-
 int _printf(const char *format, ...)
 {
-if (format != NULL)
-{
 	va_list ptr;
-	int i, l = 0, p;
+	int i, cnt = 0;
 
-	l = 0;
 	va_start(ptr, format);
+	if (format == NULL)
+		return (-1);
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -22,33 +21,16 @@ if (format != NULL)
 			i++;
 			if (format[i] == '\0')
 				return (-1);
-			p = calling(format[i], ptr);
-			if (p != -1)
-				l += p;
-			else
-			{
-				print_percent(ptr);
-				_putchar(format[i]);
-				l += 2;
-			}
+			cnt += calling(format[i], ptr);
 		}
 		else
 		{
 			_putchar(format[i]);
-			l++;
+			cnt++;
 		}
 	}
 	va_end(ptr);
-return (l);
-
-
-
-
-}
-return (-1);
-
-
-
+	return (cnt);
 }
 
 /**
@@ -57,23 +39,30 @@ return (-1);
  * @ptr: argument
  * Return: length
  */
-
 int calling(char c, va_list ptr)
 {
-	int j, size;
-	ff check[] = {
+	int i, size;
+	ls check[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
 		{'i', print_int},
-		{'d', print_int}
+		{'d', print_int},
+		{'b', print_binary},
+		{'R', rot_trans},
+		{'r', rev_string},
+		{'u', print_unsigned},
+		{'o', print_octal},
+		{'x', print_hexa},
+		{'X', print_hexa},
+		{'S', print_non_printable}
 	};
 	size = (sizeof(check) / sizeof(check[0]));
 
-	for (j = 0; j < size; j++)
+	for (i = 0; i < size; i++)
 	{
-		if (c == check[j].c)
-			return (check[j].p(ptr));
+		if (c == check[i].c)
+			return (check[i].p(ptr));
 	}
-	return (-1);
+	return (print_unknown(c));
 }
