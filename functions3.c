@@ -71,8 +71,7 @@ int print_non_printable(va_list ptr)
 {
 	char *str;
 	int i, done = 0;
-	char hexa[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-		'A', 'B', 'C', 'D', 'E', 'F'};
+	char hexa[] = "0123456789ABCDEF";
 	str = va_arg(ptr, char *);
 	if (!str)
 		return (0);
@@ -83,7 +82,10 @@ int print_non_printable(va_list ptr)
 			done++;
 			_putchar('\\');
 			_putchar('x');
-			_putchar((hexa[str[i] &  0xf0]));
+			if (str[i] &  0xf0)
+				_putchar((hexa[(str[i] & 0xf0) - 16]));
+			else
+				_putchar('0');
 			_putchar((hexa[str[i] & 0x0f]));
 		}
 		else
