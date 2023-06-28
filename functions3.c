@@ -75,7 +75,7 @@ int print_non_printable(va_list ptr)
 		'A', 'B', 'C', 'D', 'E', 'F'};
 	str = va_arg(ptr, char *);
 	if (!str)
-		str = "(null)";
+		return (0);
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
