@@ -10,7 +10,7 @@
 int main(void)
 {
 
-    	int len = _printf("%S\n", "Best\nSchool");
+    	int len = _printf("%S\n", "Ñ");
 	printf("%d\n", len);
 	return (0);
 }

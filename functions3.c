@@ -78,7 +78,7 @@ int print_non_printable(va_list ptr)
 		return (0);
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		if ((str[i] > 0 && str[i] < 32) || (str[i] >= 127))
 		{
 			done++;
 			_putchar('\\');
