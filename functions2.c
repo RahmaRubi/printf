@@ -119,5 +119,7 @@ int print_unsigned(va_list ptr)
 		str[cnt - i - 1] = '0' + num % 10;
 		num /= 10;
 	}
+	if (!cnt)
+		return (_putchar('0'));
 	return (write(1, str, cnt));
 }

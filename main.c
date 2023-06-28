@@ -9,6 +9,6 @@
  */
 int main(void)
 {
-	_printf("%o, %x\n", 0, 0);
+	_printf("%o, %x, %u\n", 0, 0, 0);
 	return (0);
 }
