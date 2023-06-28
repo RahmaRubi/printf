@@ -83,7 +83,7 @@ int print_non_printable(va_list ptr)
 			_putchar('\\');
 			_putchar('x');
 			if (str[i] &  0xf0)
-				_putchar((hexa[(str[i] & 0xf0) - 16]));
+				_putchar((hexa[(str[i] & 0xf0) >> 4]));
 			else
 				_putchar('0');
 			_putchar((hexa[str[i] & 0x0f]));
