@@ -106,7 +106,7 @@ int print_unsigned(va_list ptr)
 {
 	unsigned int num, cpy, i, cnt = 0;
 	char str[] = "0000000000";
-	
+
 	num = va_arg(ptr, unsigned int);
 	cpy = num;
 	while (cpy)
@@ -119,5 +119,5 @@ int print_unsigned(va_list ptr)
 		str[cnt - i - 1] = '0' + num % 10;
 		num /= 10;
 	}
-	return (write(1, str, cnt));	
+	return (write(1, str, cnt));
 }

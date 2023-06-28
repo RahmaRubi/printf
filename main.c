@@ -9,7 +9,9 @@
  */
 int main(void)
 {
-	printf("%u\n", 1234);
-    	_printf("%u\n", 1234);
+	unsigned int ui = 3453466;
+
+    	int len = _printf("%S\n", "Best\nSchool");
+	printf("%d", len);
 	return (0);
 }

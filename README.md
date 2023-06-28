@@ -1,2 +1,3 @@
 # printf
-First ALX Project.
+First ALX Group Project.
+A variadic printf function.
