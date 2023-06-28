@@ -22,6 +22,8 @@ int print_octal(va_list ptr)
 	j = i;
 	while (j--)
 		_putchar(octal[j]);
+	if (!i)
+		return (_putchar('0'));
 	return (i);
 }
 

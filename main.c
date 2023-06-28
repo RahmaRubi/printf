@@ -9,8 +9,6 @@
  */
 int main(void)
 {
-
-    	int len = _printf("%S\n", "Best\nSchool");
-	printf("%d\n", len);
+	_printf("%o, %x\n", 0, 0);
 	return (0);
 }
