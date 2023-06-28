@@ -9,9 +9,8 @@
  */
 int main(void)
 {
-	unsigned int ui = 3453466;
 
     	int len = _printf("%S\n", "Best\nSchool");
-	printf("%d", len);
+	printf("%d\n", len);
 	return (0);
 }

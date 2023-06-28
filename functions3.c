@@ -34,7 +34,8 @@ int print_octal(va_list ptr)
  */
 int print_hexa(va_list ptr)
 {
-	unsigned int num, magic, i, start = -1;
+	unsigned int num, magic, i;
+	int start = -1;
 
 	num = va_arg(ptr, unsigned int);
 	magic = 0xf0000000;
@@ -79,8 +80,6 @@ int print_non_printable(va_list ptr)
 	{
 		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
 		{
-			if (str[i] > 0xff)
-				return (-1);
 			done++;
 			_putchar('\\');
 			_putchar('x');
